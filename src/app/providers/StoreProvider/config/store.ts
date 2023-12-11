@@ -5,6 +5,7 @@ import { loginReducer } from 'features/AuthByUsername';
 import { StateSchema } from './StateSchema';
 
 export function createReduxStore(initialState?: StateSchema) {
+    // kornevoy reducer
     const rootReducers: ReducersMapObject<StateSchema> = {
         counter: counterReducer,
         user: userReducer,

@@ -21,13 +21,19 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
         username, password, error, isLoading,
     } = useSelector(getLoginState);
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value));
+        },
+        [dispatch],
+    );
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch],
+    );
 
     const onLoginClick = useCallback(() => {
         dispatch(loginByUsername({ username, password }));
@@ -41,7 +47,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
                 autofocus
                 type="text"
                 className={cls.input}
-                placeholder={t('Введите username')}
+                placeholder={t('Введите логин')}
                 onChange={onChangeUsername}
                 value={username}
             />
@@ -52,12 +58,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
                 onChange={onChangePassword}
                 value={password}
             />
-            <Button
-                theme={ButtonTheme.OUTLINE}
-                className={cls.loginBtn}
-                onClick={onLoginClick}
-                disabled={isLoading}
-            >
+            <Button theme={ButtonTheme.OUTLINE} className={cls.loginBtn} onClick={onLoginClick} disabled={isLoading}>
                 {t('Войти')}
             </Button>
         </div>
