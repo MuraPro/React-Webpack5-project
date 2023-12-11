@@ -46,7 +46,7 @@ export const Modal = (props: ModalProps) => {
         }
     }, [onClose]);
 
-    // Новые ссылки!!!
+    // Новые ссылки!!! pri rendere strelochnie funkcii sozdayutsya zanovo
     const onKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') {
             closeHandler();
