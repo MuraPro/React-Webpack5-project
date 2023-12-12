@@ -15,10 +15,7 @@ interface TextProps {
 
 export const Text = (props: TextProps) => {
     const {
-        className,
-        text,
-        title,
-        theme = TextTheme.PRIMARY,
+        className, text, title, theme = TextTheme.PRIMARY,
     } = props;
 
     return (

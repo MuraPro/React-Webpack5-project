@@ -19,6 +19,7 @@ Primary.args = {
     title: 'Title lorem ipsun',
     text: 'Description Description Description Description',
 };
+Primary.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const Error = Template.bind({});
 Error.args = {
