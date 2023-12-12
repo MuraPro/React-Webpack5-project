@@ -1,3 +1,4 @@
+/* stylelint-disable string-quotes */
 :root {
     --font-family-main: consolas, 'Times New Roman', serif;
     --font-size-m: 16px;
@@ -20,6 +21,6 @@
 
     // Цвета
     --overlay-color: rgba(0 0 0 / 60%);
-    --red-light: #ff0000;
+    --red-light: red;
     --red-dark: #ce0505;
 }
