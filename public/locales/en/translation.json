@@ -20,5 +20,7 @@
     "Профиль": "Profile",
     "Форма авторизации": "Auth form",
     "Вы ввели неверный логин или пароль": "Uncorrect username or password",
-    "Выйти": "Log Out"
+    "Выйти": "Log Out",
+    "Отменить": "Cansel",
+    "Сохранить": "Save"
 }
