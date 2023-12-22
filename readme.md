@@ -1,2 +1,1 @@
-1 - screens
-2 - screens
+add storybook-static
