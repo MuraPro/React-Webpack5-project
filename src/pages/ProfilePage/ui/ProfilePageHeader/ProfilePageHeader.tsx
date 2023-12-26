@@ -3,9 +3,15 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
+import {
+    getProfileData,
+    getProfileReadonly,
+    profileActions,
+    updateProfileData,
+} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useCallback } from 'react';
+import { getUserAuthData } from 'entities/User';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
@@ -14,6 +20,9 @@ interface ProfilePageHeaderProps {
 
 export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
     const { t } = useTranslation('profile');
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
 
@@ -48,7 +57,7 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
     return (
         <div className={classNames(cls.ProfilePageHeader, {}, [])}>
             <Text title={t('Профиль')} />
-            {readonly ? edit : cancel}
+            {canEdit && <div className={cls.btnsWrapper}>{readonly ? edit : cancel}</div>}
         </div>
     );
 };
