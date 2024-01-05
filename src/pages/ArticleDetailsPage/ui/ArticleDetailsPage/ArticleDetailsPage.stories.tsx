@@ -1,11 +1,12 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
 import { Article } from 'entities/Article';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { ArticleBlockType, ArticleType, ArticleView } from 'entities/Article/model/types/article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { User } from 'entities/User';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
@@ -59,16 +60,45 @@ const article: Article = {
         },
     ],
 };
+export interface IComment {
+    id: string;
+    user: User;
+    text: string;
+    articleId: string;
+    usreId: string;
+}
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [
+const comment: IComment = {
+    id: '1',
+    text: 'some comment',
+    articleId: '1',
+    usreId: '1',
+    user: {
+        id: '1',
+        username: 'Ulbi tv',
+        avatar: 'https://avatarzo.ru/wp-content/uploads/naruto-uzumaki.jpg',
+    },
+};
+
+const comments = {
+    isLoading: false,
+    ids: [1],
+    entities: {
+        1: comment,
+    },
+};
+
+export const ArticledetailsLight = Template.bind({});
+ArticledetailsLight.args = {};
+ArticledetailsLight.decorators = [
     StoreDecorator({
         articleDetails: {
             data: article,
         },
+        articleDetailsComments: comments,
     }),
 ];
+
 export const ArticledetailsDark = Template.bind({});
 ArticledetailsDark.args = {};
 ArticledetailsDark.decorators = [
@@ -77,5 +107,6 @@ ArticledetailsDark.decorators = [
         articleDetails: {
             data: article,
         },
+        articleDetailsComments: comments,
     }),
 ];

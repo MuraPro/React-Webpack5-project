@@ -139,6 +139,7 @@ const dataSmall = {
     page: 1,
     hasMore: true,
 };
+
 const dataBig = {
     isLoading: false,
     error: undefined,
