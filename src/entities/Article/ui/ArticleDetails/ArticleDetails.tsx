@@ -1,9 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -18,13 +15,13 @@ import { ArticleImageBlockComponent } from 'entities/Article/ui/ArticleImageBloc
 import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import cls from './ArticleDetails.module.scss';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
-import cls from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -47,7 +44,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         switch (block.type) {
         case ArticleBlockType.CODE:
             return (
-                <ArticleCodeBlockComponent key={block.id} block={block} className={cls.block} />
+                <ArticleCodeBlockComponent
+                    key={block.id}
+                    block={block}
+                    className={cls.block}
+                />
             );
         case ArticleBlockType.IMAGE:
             return (
@@ -59,7 +60,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             );
         case ArticleBlockType.TEXT:
             return (
-                <ArticleTextBlockComponent key={block.id} className={cls.block} block={block} />
+                <ArticleTextBlockComponent
+                    key={block.id}
+                    className={cls.block}
+                    block={block}
+                />
             );
         default:
             return null;
@@ -86,13 +91,20 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         );
     } else if (error) {
         content = (
-            <Text align={TextAlign.CENTER} title={t('Произошла ошибка при загрузке статьи.')} />
+            <Text
+                align={TextAlign.CENTER}
+                title={t('Произошла ошибка при загрузке статьи.')}
+            />
         );
     } else {
         content = (
             <>
                 <div className={cls.avatarWrapper}>
-                    <Avatar size={200} src={article?.img} className={cls.avatar} />
+                    <Avatar
+                        size={200}
+                        src={article?.img}
+                        className={cls.avatar}
+                    />
                 </div>
                 <Text
                     className={cls.title}
@@ -115,7 +127,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames(cls.ArticleDetails, {}, [className])}>{content}</div>
+            <div className={classNames(cls.ArticleDetails, {}, [className])}>
+                {content}
+            </div>
         </DynamicModuleLoader>
     );
 });
