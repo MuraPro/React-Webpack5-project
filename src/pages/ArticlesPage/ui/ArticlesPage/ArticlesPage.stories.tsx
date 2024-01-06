@@ -15,9 +15,6 @@ import ArticlesPage from './ArticlesPage';
 export default {
     title: 'pages/ArticlesPage',
     component: ArticlesPage,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
 } as ComponentMeta<typeof ArticlesPage>;
 
 const article1: Article = {
@@ -27,6 +24,7 @@ const article1: Article = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
+    userId: '1',
     type: [ArticleType.IT],
     user: {
         id: '1',
@@ -53,6 +51,7 @@ const article2: Article = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
+    userId: '2',
     type: [ArticleType.IT],
     user: {
         id: '2',
@@ -72,22 +71,24 @@ const article2: Article = {
         },
     ],
 };
-const article4: Article = {
-    id: '4',
+
+const article3: Article = {
+    id: '3',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
+    userId: '3',
     type: [ArticleType.IT],
     user: {
-        id: '4',
+        id: '3',
         username: 'Ulbi tv',
         avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
     },
     blocks: [
         {
-            id: '4',
+            id: '3',
             type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
@@ -98,22 +99,23 @@ const article4: Article = {
         },
     ],
 };
-const article3: Article = {
-    id: '3',
+const article4: Article = {
+    id: '4',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
+    userId: '4',
     type: [ArticleType.IT],
     user: {
-        id: '3',
+        id: '4',
         username: 'Ulbi tv',
         avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
     },
     blocks: [
         {
-            id: '3',
+            id: '4',
             type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
@@ -137,7 +139,9 @@ const dataSmall = {
     },
     view: ArticleView.SMALL,
     page: 1,
-    hasMore: true,
+    hasMore: false,
+    _inited: true,
+    limit: 9,
 };
 
 const dataBig = {
@@ -152,7 +156,9 @@ const dataBig = {
     },
     view: ArticleView.BIG,
     page: 1,
-    hasMore: true,
+    hasMore: false,
+    _inited: true,
+    limit: 4,
 };
 
 const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
