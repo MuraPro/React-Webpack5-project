@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
     Article,
     ArticleBlockType,
+    ArticleSortField,
     ArticleType,
     ArticleView,
 } from 'entities/Article/model/types/article';
@@ -18,7 +19,7 @@ export default {
 } as ComponentMeta<typeof ArticlesPage>;
 
 const article1: Article = {
-    id: '1',
+    id: '3',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
@@ -45,22 +46,22 @@ const article1: Article = {
     ],
 };
 const article2: Article = {
-    id: '2',
+    id: '4',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
-    userId: '2',
+    userId: '1',
     type: [ArticleType.IT],
     user: {
-        id: '2',
+        id: '1',
         username: 'Ulbi tv',
         avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
     },
     blocks: [
         {
-            id: '2',
+            id: '1',
             type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
@@ -73,22 +74,22 @@ const article2: Article = {
 };
 
 const article3: Article = {
-    id: '3',
+    id: '7',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
-    userId: '3',
+    userId: '1',
     type: [ArticleType.IT],
     user: {
-        id: '3',
+        id: '1',
         username: 'Ulbi tv',
         avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
     },
     blocks: [
         {
-            id: '3',
+            id: '1',
             type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
@@ -100,22 +101,22 @@ const article3: Article = {
     ],
 };
 const article4: Article = {
-    id: '4',
+    id: '11',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
-    userId: '4',
+    userId: '1',
     type: [ArticleType.IT],
     user: {
-        id: '4',
+        id: '1',
         username: 'Ulbi tv',
         avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
     },
     blocks: [
         {
-            id: '4',
+            id: '1',
             type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
@@ -142,6 +143,9 @@ const dataSmall = {
     hasMore: false,
     _inited: true,
     limit: 9,
+    sort: ArticleSortField.CREATED,
+    search: '',
+    type: ArticleType.ALL,
 };
 
 const dataBig = {
@@ -159,6 +163,9 @@ const dataBig = {
     hasMore: false,
     _inited: true,
     limit: 4,
+    sort: ArticleSortField.CREATED,
+    search: '',
+    type: ArticleType.ALL,
 };
 
 const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
